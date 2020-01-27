@@ -10,6 +10,6 @@ $conn = pg_connect(getenv("DATABASE_URL"));
 // $conn = pg_connect("host=$DB_HOST dbname=$DB_DATABASE user=$DB_USERNAME password=$DB_PASSWORD");
 
 if(!$conn){
-	die("ERROR : " .  pg_last_error($conn) );
+	die("Connection fail");
 }
 ?>
