@@ -2,8 +2,8 @@
 	if(isset($_POST['mode'])) {
 		if ($_POST['mode'] == "reg") {
 			$uid = $_POST['uid'];
-			$pass = $_POST['pass'];
 			$eid = $_POST['eid'];
+			$pass = $_POST['pass'];
 
 			include 'config.php';
 
@@ -14,11 +14,11 @@
 
 			if(pg_num_rows($resu)>0) {
 				pg_close($conn);
-				die("username exists");
+				die("username already exists");
 			}
 			else if(pg_num_rows($rese)>0) {
 				pg_close($conn);
-				die("email exists");
+				die("email already exists");
 			}
 			else{
 				// $stmt = $conn->prepare("INSERT INTO users (username,pass,email) VALUES (?,?,?)");
@@ -30,7 +30,7 @@
 				$scheck = pg_query($conn, $sql);
 				if (!$scheck) {
 					pg_close($conn);
-					die("signup_failed");
+					die("signup failed");
 				}
 				else {
 					pg_close($conn);
@@ -56,12 +56,12 @@
 				}
 				elseif ($opass != $pass) {
 					pg_close($conn);
-					die("login_failed");   //wrong password
+					die("username/password doesn't match");   //wrong password
 				}
 			}
 			else {
 				pg_close($conn);
-				die("login_failed");   //wrong uid
+				die("username/password doesn't match");   //wrong uid
 				}
 			}
 		pg_close($conn);
