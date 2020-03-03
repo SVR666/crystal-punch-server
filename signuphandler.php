@@ -8,7 +8,7 @@
 
 			include 'config.php';
 
-			$sqlu = "SELECT * FROM users WHERE username='$uid'";
+			$sqlu = "SELECT * FROM users WHERE username ='$uid'";
 			$resu = pg_query($conn,$sqlu);
 
 			if(pg_num_rows($resu)>0)
@@ -28,6 +28,8 @@
 				}
 				else
 				{
+					$sql = "INSERT INTO winloss (username,win,loss) VALUES ('$uid',0,0);";
+					pg_query($conn, $sql);
 					pg_close($conn);
 					die("signup_success");
 				}
@@ -42,15 +44,20 @@
 
 			include 'config.php';
 
-			$sqll = "SELECT * FROM users WHERE username= '$uid'";
+			$sqll = "SELECT * FROM users WHERE username = '$uid'";
 			$result = pg_query($conn, $sqll);
 			if($row = pg_fetch_assoc($result))
 			{
 				$opass = $row['password'];
 				if ($opass == $pass)
 				{
+					$sqlw = "SELECT * FROM winloss WHERE username = '$uid'";
+					$resw = pg_query($conn, $sqlw);
+					$winloss = pg_fetch_assoc($resw)
+					$win = $winloss['win'];
+					$loss = $winloss['loss'];
 					pg_close($conn);
-					die("login_success");
+					die("login_success|".$win."|".$loss);
 				}
 				elseif ($opass != $pass)
 				{
