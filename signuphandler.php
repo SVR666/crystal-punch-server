@@ -53,7 +53,7 @@
 				{
 					$sqlw = "SELECT * FROM winloss WHERE username = '$uid'";
 					$resw = pg_query($conn, $sqlw);
-					$winloss = pg_fetch_assoc($resw)
+					$winloss = pg_fetch_assoc($resw);
 					$win = $winloss['win'];
 					$loss = $winloss['loss'];
 					pg_close($conn);
