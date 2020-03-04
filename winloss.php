@@ -5,14 +5,14 @@
     include 'config.php';
     if ($_POST['win_loss'] == "loss")
     {
-      $sql = "UPDATE winloss SET loss = loss+1 WHERE username = '$uid';";
-      pg_query($conn, $sql);
+      $sqll = "UPDATE winloss SET loss = loss+1 WHERE username = '$uid';";
+      pg_query($conn, $sqll);
       pg_close($conn);
     }
     elseif ($_POST['win_loss'] == "win")
     {
-      $sql = "UPDATE winloss SET win = win+1 WHERE username = '$uid';";
-      pg_query($conn, $sql);
+      $sqlw = "UPDATE winloss SET win = win+1 WHERE username = '$uid';";
+      pg_query($conn, $sqlw);
       pg_close($conn);
     }
   }
