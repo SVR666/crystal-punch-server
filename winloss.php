@@ -1,7 +1,7 @@
 <?php
   if(isset($_POST['win_loss']))
   {
-    $uid = "svr666";
+    $uid = $_POST['uid'];
     include 'config.php';
     if ($_POST['win_loss'] == "loss")
     {
