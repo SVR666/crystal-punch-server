@@ -56,8 +56,9 @@
 					$winloss = pg_fetch_assoc($resw);
 					$win = $winloss['win'];
 					$loss = $winloss['loss'];
+					$coin = $winloss['coins'];
 					pg_close($conn);
-					die("login_success|".$win."|".$loss);
+					die("login_success|".$win."|".$loss."|".$coin);
 				}
 				elseif ($opass != $pass)
 				{
