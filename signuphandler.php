@@ -28,7 +28,7 @@
 				}
 				else
 				{
-					$sql = "INSERT INTO winloss (username,win,loss) VALUES ('$uid',0,0);";
+					$sql = "INSERT INTO winloss (username,win,loss,coins) VALUES ('$uid',0,0,0);";
 					pg_query($conn, $sql);
 					pg_close($conn);
 					die("signup_success");
